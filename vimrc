@@ -2,7 +2,22 @@
 let mapleader = " "
 
 syntax on
-filetype plugin on
+filetype plugin indent on
+
+" A vimrc's presence makes vim skip its built-in defaults.vim, so basics like
+" ruler and incsearch are off unless set here.
+set ruler
+
+" Case-insensitive search unless the pattern contains a capital letter.
+set ignorecase smartcase
+" Highlight all matches, and highlight while still typing the pattern.
+set hlsearch incsearch
+" Ctrl-l clears search highlighting (and still redraws, its default job).
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+
+" Indentation defaults: 4-column indents as spaces. Language indent files
+" loaded by `filetype plugin indent on` override these per filetype.
+set shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
 
 " Toggle the NERDTree file tree with <leader>n (space + n)
 nnoremap <leader>n :NERDTreeToggle<CR>
