@@ -12,8 +12,14 @@ brew install fzf ripgrep
 ```
 
 `fzf` is loaded from `/opt/homebrew/opt/fzf` by the vimrc; `ripgrep` backs the
-`:RG` live grep. If a `~/.vimrc` file exists, vim uses it instead of this
-repo's `vimrc` — delete it.
+`:RG` live grep.
+
+A `~/.vimrc` file, if one exists, shadows this repo's `vimrc`. Move it out of
+the way:
+
+```sh
+[ -f ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.bak
+```
 
 ## Keys
 
