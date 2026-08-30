@@ -11,6 +11,16 @@ git clone --recurse-submodules https://github.com/theptrk/.vim.git ~/.vim
 brew install fzf ripgrep
 ```
 
+Open a Python file and install Pyright once:
+
+```vim
+:LspInstallServer pyright-langserver
+```
+
+Run that command while editing a Python file, then restart Vim. Language
+servers are installed under
+`~/.local/share/vim-lsp-settings/servers/`, not committed to this repository.
+
 `fzf` is loaded from `/opt/homebrew/opt/fzf` by the vimrc; `ripgrep` backs the
 `:RG` live grep.
 
@@ -23,7 +33,7 @@ the way:
 
 ## Keys
 
-Leader is space. Press space and wait 500ms for a which-key popup listing
+Leader is space. Press space and wait 1500ms for a which-key popup listing
 these mappings:
 
 | Keys | Action |
@@ -35,6 +45,15 @@ these mappings:
 | `space g` | live-grep file contents with ripgrep (`:RG`) |
 | `space b` | switch between open buffers |
 | `fd` in insert mode | escape |
+
+When a language server is active:
+
+| Keys | Action |
+|---|---|
+| `gd` | go to definition |
+| `gr` | find references |
+| `K` | show hover/type information |
+| `[g` / `]g` | previous/next diagnostic |
 
 `j`/`k` move by display lines on wrapped text; with a count (`5j`) they move
 by logical lines, so relative line numbers still work.
@@ -49,6 +68,13 @@ plugin is a git submodule pinned to a commit.
 - [nerdtree](https://github.com/preservim/nerdtree) — file tree
 - [vim-which-key](https://github.com/liuchengxu/vim-which-key) — leader-key
   popup menu
+- [vim-lsp](https://github.com/prabirshrestha/vim-lsp) — Language Server
+  Protocol client and semantic navigation
+- [vim-lsp-settings](https://github.com/mattn/vim-lsp-settings) — installs and
+  configures language servers such as Pyright
+
+The Gruvbox Material colorscheme is tracked separately under
+`pack/colors/start/`, also as a Git submodule.
 
 Add a plugin:
 
