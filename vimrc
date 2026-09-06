@@ -1,6 +1,9 @@
 " Use space as the leader key. Must come before any <leader> mappings.
 let mapleader = " "
 
+" Save the current file with <leader>w (Space, then w).
+nnoremap <leader>w :write<CR>
+
 syntax on
 filetype plugin indent on
 
@@ -45,6 +48,7 @@ nnoremap <leader>b :Buffers<CR>
 set timeoutlen=1500
 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
 let g:which_key_map = {
+  \ 'w': [':write',          'save file'],
   \ 'n': [':NERDTreeToggle', 'toggle file tree'],
   \ 'f': [':NERDTreeFind',   'reveal current file in tree'],
   \ 'p': [':Files',          'find files by name'],
@@ -88,6 +92,7 @@ set directory=~/.vim/swap//
 
 " Wrap long lines at word boundaries instead of breaking mid-word
 set linebreak
+set nowrap
 
 inoremap fd <Esc>
 
