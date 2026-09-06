@@ -90,6 +90,13 @@ autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.beancount set filetype=beancount
 set directory=~/.vim/swap//
 
+" Automatically notice files changed outside Vim (for example by an editor or agent).
+set autoread
+augroup AutoReloadExternalChanges
+  autocmd!
+  autocmd FocusGained,BufEnter * checktime
+augroup END
+
 " Wrap long lines at word boundaries instead of breaking mid-word
 set linebreak
 set nowrap
