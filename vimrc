@@ -123,9 +123,9 @@ nnoremap <expr> k v:count ? 'k' : 'gk'
 vnoremap <expr> j v:count ? 'j' : 'gj'
 vnoremap <expr> k v:count ? 'k' : 'gk'
 
-" Start a full Codex chat in a new Ghostty split from a Visual selection.
-function! s:AskCodexSelection() abort
-  let prompt = input('Ask Codex: ')
+" Start a Cursor Agent chat in a new Ghostty split from a Visual selection.
+function! s:AskAgentSelection() abort
+  let prompt = input('Ask Agent: ')
   if empty(prompt)
     return
   endif
@@ -137,7 +137,7 @@ function! s:AskCodexSelection() abort
     \ . "\nLines: " . first_line . "-" . last_line
     \ . "\n\nSelected code:\n```\n" . selected_code . "\n```"
   let project_dir = getcwd()
-  let shell_command = 'codex -C ' . shellescape(project_dir)
+  let shell_command = 'agent --workspace ' . shellescape(project_dir)
     \ . ' ' . shellescape(initial_prompt) . "\n"
   let apple_script = [
     \ 'on run argv',
@@ -160,8 +160,8 @@ function! s:AskCodexSelection() abort
   let result = system(join(map(copy(command), 'shellescape(v:val)'), ' '))
   if v:shell_error
     echohl ErrorMsg
-    echom 'Could not open Codex in Ghostty: ' . result
+    echom 'Could not open Agent in Ghostty: ' . result
     echohl None
   endif
 endfunction
-vnoremap <leader>a :<C-U>call <SID>AskCodexSelection()<CR>
+vnoremap <leader>a :<C-U>call <SID>AskAgentSelection()<CR>
