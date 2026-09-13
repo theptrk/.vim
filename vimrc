@@ -97,9 +97,14 @@ augroup AutoReloadExternalChanges
   autocmd FocusGained,BufEnter * checktime
 augroup END
 
-" Wrap long lines at word boundaries instead of breaking mid-word
+" Soft-wrap is off by default so code stays one logical line per display line.
+" Markdown is the exception: wrap at word boundaries instead of mid-word.
 set linebreak
 set nowrap
+augroup MarkdownWrap
+  autocmd!
+  autocmd FileType markdown setlocal wrap
+augroup END
 
 inoremap fd <Esc>
 
