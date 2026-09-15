@@ -21,6 +21,9 @@ nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 " Indentation defaults: 4-column indents as spaces. Language indent files
 " loaded by `filetype plugin indent on` override these per filetype.
 set shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab
+" Vim's Python indent uses shiftwidth()*2 after an open paren at EOL
+" (the PEP 8 hanging indent for `def`). Override so calls indent by 4.
+let g:python_indent = {'open_paren': 'shiftwidth()', 'continue': 'shiftwidth()'}
 
 " Create folds automatically from indentation; zM closes all folds.
 set foldmethod=indent
